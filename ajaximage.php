@@ -37,16 +37,16 @@ if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST")
           echo "<img src='uploads/".$actual_image_name."' class='preview'>";
         }
         else
-        echo "failed";
+          echo "Uploading failed.";
       }
       else
-      echo "Image file size max 1 MB";
+        echo "Image file max size is 1 MB";
     }
     else
-    echo "Invalid file format..";
+      echo "Invalid file format.";
   }
   else
-  echo "Please select image..!";
+    echo "You didn't select any image.";
   exit;
 }
 ?>
