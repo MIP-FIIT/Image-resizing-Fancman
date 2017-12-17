@@ -13,15 +13,15 @@
 
         <link rel="stylesheet" href="css/normalize.css">
 
-        <script type="text/javascript" src="jquery.min.js"></script>
-        <script type="text/javascript" src="jquery.form.js"></script>
+        <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery/jquery.form.js"></script>
     </head>
     <body>
         <div id='preview'>
         </div>
-        <form id="imageform" method="post" enctype="multipart/form-data" action='ajaximage.php'>
+        <form id="imageform" method="post" enctype="multipart/form-data" action='uploadImage.php'>
         Upload image:
-        <div id='imageloadstatus' style='display:none'><img src="loader.gif" alt="Uploading...."/></div>
+        <div id='imageloadstatus' style='display:none'><img src="img/loader.gif" alt="Uploading...."/></div>
         <div id='imageloadbutton'>
         <input type="file" name="photoimg" id="photoimg" />
         </div>
