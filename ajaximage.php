@@ -9,7 +9,7 @@ $valid_formats = array("jpg", "png", "gif", "bmp","jpeg","PNG","JPG","JPEG","GIF
 if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST")
 {
   include_once 'includes/getExtension.php';
-  
+
   $imagename = $_FILES['photoimg']['name'];
   $size = $_FILES['photoimg']['size'];
   if(strlen($imagename))
