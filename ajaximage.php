@@ -9,6 +9,7 @@ $valid_formats = array("jpg", "png", "gif", "bmp","jpeg","PNG","JPG","JPEG","GIF
 if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST")
 {
   include_once 'includes/getExtension.php';
+  
   $imagename = $_FILES['photoimg']['name'];
   $size = $_FILES['photoimg']['size'];
   if(strlen($imagename))
@@ -33,8 +34,19 @@ if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST")
         if(move_uploaded_file($uploadedfile, $path.$actual_image_name))
         {
           //Insert upload image files names into user_uploads table
-          mysqli_query($db,"UPDATE users SET profile_image='$actual_image_name' WHERE uid='$session_id';");
-          echo "<img src='uploads/".$actual_image_name."' class='preview'>";
+          try
+          {
+            $sql = "UPDATE users SET profile_image='$actual_image_name' WHERE uid='$session_id';"
+            $stmt = $conn->prepare($sql);
+            // Execute the query
+            $stmt->execute();
+            // Show image on page
+            echo "<img src='uploads/".$actual_image_name."' class='preview'>";
+         }
+         catch(PDOException $e)
+         {
+           echo $sql . "<br>" . $e->getMessage();
+         }
         }
         else
           echo "Uploading failed.";
