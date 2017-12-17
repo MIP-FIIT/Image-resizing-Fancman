@@ -23,6 +23,7 @@ if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST")
     {
       if($size < (1024*1024)) // Image size max 1 MB.
       {
+        include_once 'usersTable.php';
         $actual_image_name = time() . $session_id . "." . $extension;
         $uploadedfile = $_FILES['photoimg']['tmp_name'];
 
