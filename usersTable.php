@@ -14,13 +14,12 @@ function tableExists($pdo, $table) // Function checks if table already exists
   return $result !== FALSE;
 }
 
-if(tableExists($db, "users") == FALSE) // I table doesnt exist create it
+if(tableExists($db, "users") == FALSE) // If table doesnt exist create it
 {
   $sql = file_get_contents('users.sql');
 
   if ($db->query($sql) === TRUE) {
-      echo "Table users created successfully";
-
+      // Random user data
       $users = array(
         array("tomas", "12345", null),
         array("andrej", "123456", null),
@@ -29,7 +28,8 @@ if(tableExists($db, "users") == FALSE) // I table doesnt exist create it
       );
 
       foreach ($users as $user) {
-        try {
+        try // Inserting users data into table
+        {
           $stmt = $dbh->prepare("INSERT INTO users (username, password, profile_image) VALUES (:username, :password, :profile_image)");
           $stmt->bindParam(':username', $user[0]);
           $stmt->bindParam(':password', $user[1]);
