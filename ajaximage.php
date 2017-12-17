@@ -3,6 +3,10 @@ include('db.php');
 session_start();
 $session_id = '1';  // User session id.
 $path = "uploads/"; // Images folder path.
+$bigImageWidth = 200;
+$midImageWidth = 100;
+$smallImageWidth = 50;
+
 
 $valid_formats = array("jpg", "png", "gif", "bmp","jpeg","PNG","JPG","JPEG","GIF","BMP");
 // If there is any POST request
@@ -24,7 +28,7 @@ if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST")
 
         // Re-sizing image.
         include 'includes/compressImage.php';
-        $widthArray = array(200, 100, 50);  // Image dimensions.
+        $widthArray = array($bigImageWidth, $midImageWidth, $smallImageWidth);  // Image dimensions.
         foreach($widthArray as $newwidth)   // Compressing images and echoing them on page
         {
           $filename = compressImage($extension, $uploadedfile, $path, $actual_image_name, $newwidth);
