@@ -30,7 +30,7 @@ if(tableExists($db, "users") == FALSE) // If table doesnt exist create it
       foreach ($users as $user) {
         try // Inserting users data into table
         {
-          $stmt = $dbh->prepare("INSERT INTO users (username, password, profile_image) VALUES (:username, :password, :profile_image)");
+          $stmt = $db->prepare("INSERT INTO users (username, password, profile_image) VALUES (:username, :password, :profile_image)");
           $stmt->bindParam(':username', $user[0]);
           $stmt->bindParam(':password', $user[1]);
           $stmt->bindParam(':profile_image', $user[2]);
